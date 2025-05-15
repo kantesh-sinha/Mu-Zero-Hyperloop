@@ -114,5 +114,48 @@ The following table shows different resistor combinations for different cut-off 
 This tool was used: http://sim.okawa-denshi.jp/en/OPseikiLowkeisan.htm
 ![image](https://github.com/user-attachments/assets/f69bbde4-b096-4006-ad37-be7e7bf51cfd)
 
+![image](https://github.com/user-attachments/assets/5985e2d9-2be7-469a-b88b-b271bb2467d4)
 
+Interfaces to other subsystems
+
+Edit
+3.1 Interface to Subsystem 1: Cooling
+Sensors are required for various operations and measurements in the cooling subsystem of the pod.NTC10K 3950 is placed at the cooling tank in the reservoir centre and is used to collect temperature data from the coolant in the reservoir to optimize coolant volume. Mass Flow Rate Sensor - YF-S201C is placed between coolant reservoir and HX LIM and is used to collect flow rate data from coolant flow into the reservoir to help determine coolant pressure Screw-in Temperature Sensors- NTC10K at 25 Â°C are placed betweenPEUHX and LIM HX to Reservoir) and is used to collect temperature data from the respective locations. The 3temperature sensors allow monitoring and controlling of cooling components
+
+![image](https://github.com/user-attachments/assets/4cdc1d27-e9ca-4024-b07f-8f44a1d6f8e4)
+
+3.2 Interface to Subsystem 2: Suspension
+Kubler 2420 hollow shaft are navigation aid sensors used to determine the podâsvelocity and travelled distance. It will be placed on the shaft, there will be two shafts and the wheel encoder will be attached between both.
+![image](https://github.com/user-attachments/assets/eb35380f-1886-4db1-887e-f45683ac6b62)
+
+
+3.3 Interface to Subsystem 3: Brakes
+:6 Pneumatic Pressure Sensors SICK-PBT-RB016SG1SSNAMA0Z will be attached to the valve, 3 in front and 3 in the rear. The values obtained by these sensors are read via an interference-proof 4-20 interface by the Brake ECU.In case of an error such as loss of power or microcontroller failure the switch opens the SDC and the EBS will activate
+![image](https://github.com/user-attachments/assets/686856be-9a5e-4575-a551-bddbee14582d)
+
+
+4. System Operation during Demonstration
+During the demonstration and test runs the sensors will be powered though the Power Distribution Unit PDUdepending upon the stage of operation of the pod, for eg: the cooling sensors will not be powered in the accelerationphase but during the cruising and deceleration phase of the run due to them being useful in the said phases. Thesensors are expected to provide a complete set of data ranging from position, velocity, temperature and pressure.
+
+
+
+5. Risks and Safety
+Needed for: ITD, FDD
+For each Subsystem a Risk assessment of the component needs to be done. This is especially important for safety critical components such as brakes, the HV-System and safety Sensors, but also needed for the other subsystems. This includes a decription of:
+Which features of the system incorporate the highest safety risks?
+How likely is that failure
+For such a Risk assessment, an FMEA is a suitable method. See FMEA - Wikipedia
+
+
+
+6. Testing and Validation
+Sensor ECU - Analog input low pass filter: Checking of cut off frequency 50 Hz and scaling factor.•
+Analog input conversion: Converting raw readings to PT100 temperatures (LIM temperature), NTC 10ktemperatures (PE cooling) and gap height sensor are correct. For the temperatures, an external temperature was used.
+IMU driver: The IMU axis and read values are correct. The measured values were compared to the known gravitational acceleration for validation.
+Fiducial Sensors: The value read by the laser sensor was confirmed with a tape measure.•Wheel Encoder: One revolution of the wheel encoder leads also to one revolution measured.•Stripe sensor: Verified stripe counting works correctly
+Testing procedure:
+
+Sensors data range check: All sensor values are checked for plausibility against limit values. If an implausible sensor reading is detected, the shutdown circuit will be opened.
+Sensor data plausibility check: The data of different sensors is compared for plausibility. The position estimate based on the velocity sensor is compared with the stripe counter and on a too-high derivation, the shutdown circuit will be opened
+The Sensor ECUs and the emergency brake ECUs are watchdogs interlocked via a heartbeat message over the CAN bus. If one of the ECUs fails, the other ECUs can open the shutdown circuit and therefore bring the pod to a safe state.
 
