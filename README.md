@@ -19,5 +19,85 @@ POWER CONSUMPTION OF SENSORS
 
 ![image](https://github.com/user-attachments/assets/d66c5aa0-1e52-45af-9798-c76ac6e3f260)
 
+ANALOG I/P USAGE ECUs
 
+ECU Brake front
+Function: Control of brake front
+DIN1: SDC(Shut Down Circuit)Reading
+DIN2:
+AIN1: 4..20mA I/P-Pressure sensor front 1 : Tank pressure
+AIN2: 4..20mA I/P-Pressure sensor front 2 : Acting chamber pressure
+AIN3: 4..20mA I/P-Pressure sensor front 3 : Retracting chamber pressure
+AIN4:
+Edit
+
+ECU Brake rear
+Function: Control of brake rear
+DIN1: SDC(Shut Down Circuit)Reading
+DIN2:
+AIN1: 4..20mA I/P-Pressure sensor rear 1: Tank pressure
+AIN2: 4..20mA I/P-Pressure sensor rear 2: Acting chamber pressure
+AIN3: 4..20mA I/P-Pressure sensor rear 3: Retracting chamber pressure
+AIN4:
+Edit
+
+ECU Sensor front
+Function: Sensors and state machine
+IMUs: 3 IMUs for state estimation
+RS232:
+Encoder: Wheel encoder left front
+DIN1: Mass Flow Rate Sensor YF-S201C - between coolant reservoir and HX LIM
+DIN2:
+DIN3:
+DIN4:
+AIN1: 1500Ohms pull up-LIM temperature sensor stator 1
+AIN2: 1500Ohms pull up-LIM temperature sensor stator 2
+AIN3: 1500Ohms pull up-LIM temperature sensor stator 3
+AIN4: 1500Ohms pull up-LIM temperature sensor stator 4
+AIN5: Screw-in Temperature Sensors NTC10K at 25 °C - between coolant reservoir and HX LIM
+AIN6: battery Temperature Sensor NTC10K
+AIN7: Cooling temperature sensor NTC 10K 3950 - cooling tank reservoir center
+AIN8: Screw-in Temperature Sensors NTC10K at 25 °C between HX LIM and HX PEU
+
+ECU Sensor rear
+Function: Sensors and state estimation
+IMUs: 3 IMUs for state estimation
+RS232:
+Encoder: Wheel Encoder left rear
+DIN1: Stripe Sensor left
+DIN2: Stripe Sensor Right
+DIN3:
+DIN4:
+AIN1: 1500Ohms pull up-LIM temperature sensor -coil1
+AIN2: 1500Ohms pull up-LIM temperature sensor -coil2
+AIN3: 1500Ohms pull up-LIM temperature sensor -coil3
+AIN4:
+AIN5:
+AIN6:
+AIN7:
+AIN8:
+Edit
+
+Pin Mapping of Sensor ECU
+![image](https://github.com/user-attachments/assets/966dab0c-bb52-4e78-8874-a9473bbe95d8)
+VBAT - Voltage Battery
+RTS - Reflowable Thermal Switch
+TX - Transmit
+Edit
+Overview
+The analog I/P are structured as follows:
+
+Input attenuation. Configure input for
+analog voltage 0..5V
+analog current 4..20mA
+Edit
+Input Configuration
+Edit
+Input Attenuation
+Input attenuation reduces the power of a signal without appreciably distorting its waveform. Each of the analog I/P can be configured by placing resistors to read either of the following
+
+voltage e.g. 0…3.3V or 0…5V)
+a current (e.g. 4…20mA)
+resistive sensor (e.g. NTC)
+![image](https://github.com/user-attachments/assets/f4d1db96-6ef4-4da6-bf7b-c373aaca9511)
 
